@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.kumuluzee.blocker</groupId>
-    <artifactId>RSO-ai</artifactId>
+    <groupId>com.kumuluzee.blocker.ai</groupId>
+    <artifactId>ai</artifactId>
     <version>1.0.0</version>
     <modules>
         <module>ai-api</module>

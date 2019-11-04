@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>RSO-ai</artifactId>
-        <groupId>com.kumuluzee.blocker</groupId>
+        <artifactId>ai</artifactId>
+        <groupId>com.kumuluzee.blocker.ai</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,11 +12,6 @@
     <artifactId>ai-api</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.kumuluz.ee.config</groupId>
-            <artifactId>kumuluzee-config-consul</artifactId>
-            <version>${kumuluzee-config.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.kumuluz.ee.rest</groupId>
             <artifactId>kumuluzee-rest-core</artifactId>
