@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 language: java
-dist: bionic
+dist: trusty
 jdk:
   - openjdk8
 cache:
