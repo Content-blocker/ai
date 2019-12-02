@@ -2,10 +2,10 @@ package com.kumuluzee.blocker.ai.api;
 
 import javax.ws.rs.*;
 
-@Path("/call")
+@Path("/ai")
 public class AiApi {
     @GET
     public String getResources() {
-        return "stringai";
+        return "Hellow world! <br> I am intelligent.";
     }
 }
