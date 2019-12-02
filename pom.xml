@@ -81,27 +81,6 @@
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-models</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-services</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>si.fri.rso.samples</groupId>
-                <artifactId>image-catalog-lib</artifactId>
-                <version>${project.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
