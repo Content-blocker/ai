@@ -6,6 +6,7 @@ import javax.xml.ws.Response;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+@RegisterService(value = "ai", ttl = 40, pingInterval = 20, environment = "test", version = "1.0.0")
 @ApplicationPath("/")
 public class RestApplication extends Application {
 

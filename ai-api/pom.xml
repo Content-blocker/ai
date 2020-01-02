@@ -17,10 +17,6 @@
             <artifactId>kumuluzee-microProfile-2.2</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kumuluz.ee.discovery</groupId>
-            <artifactId>kumuluzee-discovery-consul</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.kumuluz.ee</groupId>
             <artifactId>kumuluzee-core</artifactId>
         </dependency>
@@ -44,6 +40,16 @@
         <dependency>
             <groupId>com.kumuluz.ee.metrics</groupId>
             <artifactId>kumuluzee-metrics-core</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>kumuluzee-config-etcd</artifactId>
+            <groupId>com.kumuluz.ee.config</groupId>
+            <version>${kumuluzee-config.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee.discovery</groupId>
+            <artifactId>kumuluzee-discovery-etcd</artifactId>
+            <version>${kumuluzee-discovery.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,33 @@
+kumuluzee:
+  name: ai
+  env:
+    name: test
+  version: 1.0.0
+  server:
+    base-url: http://localhost:8082
+    http:
+      port: 8082
+  #datasources:
+  #  - jndi-name: jdbc/ImageMetadataDS
+  #    connection-url: jdbc:postgresql://192.168.29.109:5432/image-metadata
+  #    username: dbuser
+  #    password: postgres
+  #    max-pool-size: 20
+  #config:
+  #  etcd:
+  #    hosts: http://34.89.142.186:2379
+  discovery:
+    etcd:
+      hosts: http://34.89.142.186:2379/
+  #health:
+  #  checks:
+  #    data-source-health-check:
+  #      type: liveness
+  #      jndi-name: jdbc/ImageMetadataDS
+  #metrics:
+  #  web-instrumentation:
+  #    - name: images-endpoint
+  #      url-pattern: /v1/images/*
+configuration-properties:
+  ai:
+    enabled: true
