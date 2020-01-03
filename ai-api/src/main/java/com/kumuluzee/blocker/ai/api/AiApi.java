@@ -30,6 +30,15 @@ public class AiApi {
     }
 
     @GET
+    @Path("/proxyprovider")
+    public String proxyprovider(){
+        if(providerUrlString.isPresent()){
+           return providerUrlString.get();
+        }
+        return "notin";
+    }
+
+    @GET
     public String getResources() {
         return "Hellow world! <br> I am intelligent.";
     }
