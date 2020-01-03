@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Optional;
 
 @RequestScoped
-@Path("/ai")
+@Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AiApi {
