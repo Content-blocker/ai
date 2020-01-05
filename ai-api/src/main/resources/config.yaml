@@ -18,15 +18,16 @@ kumuluzee:
   discovery:
     etcd:
       hosts: http://34.89.142.186:2379/
-  #health:
-  #  checks:
-  #    data-source-health-check:
-  #      type: liveness
-  #      jndi-name: jdbc/ImageMetadataDS
-  #metrics:
-  #  web-instrumentation:
-  #    - name: images-endpoint
-  #      url-pattern: /v1/images/*
+  health:
+    logs:
+      enabled: true
+    checks:
+      etcd-health-check:
+        connection-url: http://34.89.142.186:2379/health
+  metrics:
+    web-instrumentation:
+      - name: ai-api
+        url-pattern: /ai/api/*
 configuration-properties:
   ai:
     enabled: true
