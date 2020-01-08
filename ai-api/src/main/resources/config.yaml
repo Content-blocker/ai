@@ -12,13 +12,13 @@ kumuluzee:
   #    username: dbuser
   #    password: postgres
   #    max-pool-size: 20
-  #config:
-  #  etcd:
-  #    hosts: http://34.89.142.186:2379
   discovery:
     etcd:
       hosts: http://34.89.142.186:2379/
   health:
+    servlet:
+      mapping: /ai/health
+      enabled: true
     logs:
       enabled: true
     checks:

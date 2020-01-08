@@ -2,6 +2,7 @@ package com.kumuluzee.blocker.ai.api;
 
 import com.kumuluz.ee.discovery.annotations.DiscoverService;
 import com.kumuluz.ee.discovery.enums.AccessType;
+import com.kumuluz.ee.logs.cdi.Log;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @RequestScoped
 @Path("/api")
+@Log
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.TEXT_PLAIN)
 public class AiApi {
@@ -33,7 +35,6 @@ public class AiApi {
         if(providerTarget.isPresent()){
             links += "<a href='"+ providerString + "/provider/api'>provider/api</a><br>";
         }
-
         return "Hellow world! <br> I am intelligent. <br>" + links;
     }
 
