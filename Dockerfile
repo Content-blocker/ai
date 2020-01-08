@@ -6,6 +6,6 @@ WORKDIR /ai
 
 ADD ./ai-api/target/ai-api-1.0.0.jar /ai
 
-EXPOSE 8080
+EXPOSE 8082
 
 CMD ["java", "-jar", "ai-api-1.0.0.jar"]
