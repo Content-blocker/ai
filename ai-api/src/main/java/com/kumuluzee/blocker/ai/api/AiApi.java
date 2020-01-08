@@ -12,9 +12,9 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.util.Optional;
 
+@Log
 @RequestScoped
 @Path("/api")
-@Log
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.TEXT_PLAIN)
 public class AiApi {
