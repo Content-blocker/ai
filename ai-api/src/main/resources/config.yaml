@@ -6,12 +6,12 @@ kumuluzee:
   server:
     http:
       port: 8082
-  #datasources:
-  #  - jndi-name: jdbc/ImageMetadataDS
-  #    connection-url: jdbc:postgresql://192.168.29.109:5432/image-metadata
-  #    username: dbuser
-  #    password: postgres
-  #    max-pool-size: 20
+  datasources:
+    - jndi-name: jdbc/blockerstorage
+      connection-url: jdbc:postgresql://35.198.81.102/blockerstorage
+      username: postgres
+      password: postgres
+      max-pool-size: 20
   discovery:
     etcd:
       hosts: http://34.89.142.186:2379/
@@ -24,6 +24,9 @@ kumuluzee:
     checks:
       etcd-health-check:
         connection-url: http://34.89.142.186:2379/health
+      data-source-health-check:
+        type: liveness
+        jndi-name: jdbc/blockerstorage
   metrics:
     web-instrumentation:
       - name: ai-api
@@ -42,9 +45,9 @@ kumuluzee:
                                 </Appenders>
                                 <Loggers>
                                     <!-- Default logger -->
-                                    <Root level="all">
+                                    <Root level="info">
                                         <AppenderRef ref="console" level="info"/>
-                                        <AppenderRef ref="logstash" level="trace"/>
+                                        <AppenderRef ref="logstash" level="info"/>
                                     </Root>
                                 </Loggers>
                             </Configuration>'

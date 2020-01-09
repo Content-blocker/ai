@@ -33,6 +33,7 @@ public class AiApi {
         String links = "";
         if(aiTarget.isPresent()){
             links += "<a href='"+ aiString + "/ai/api/integrations'>ai/api/integrations</a><br>";
+            links += "<a href='"+ aiString + "/ai/health'>ai/health</a><br>";
         }
         return "Hellow world! <br> I am intelligent. <br><br>" + links;
     }
