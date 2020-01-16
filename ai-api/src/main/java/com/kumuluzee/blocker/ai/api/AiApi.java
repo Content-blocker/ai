@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.Optional;
 
 @Log
@@ -34,6 +35,7 @@ public class AiApi {
         if(aiTarget.isPresent()){
             links += "<a href='"+ aiString + "/ai/api/integrations'>ai/api/integrations</a><br>";
             links += "<a href='"+ aiString + "/ai/health'>ai/health</a><br>";
+            links += "<a href='"+ aiString + "/ai/api/block'>ai/api/block</a><br>";
         }
         return "Hellow world! <br> I am intelligent. <br><br>" + links;
     }
@@ -72,5 +74,17 @@ public class AiApi {
 
         out += "</body>";
         return out;
+    }
+
+    @GET
+    @Timed
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/block")
+    public Response block() {
+        return Response
+                .status(Response.Status.OK)
+                .entity("[{\"block\":\"ocean\"}]")
+                .build();
     }
 }
