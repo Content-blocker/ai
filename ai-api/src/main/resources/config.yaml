@@ -38,16 +38,11 @@ kumuluzee:
                                     <Console name="console" target="SYSTEM_OUT">
                                         <PatternLayout pattern="%d %p %marker %m %X %ex %n"/>
                                     </Console>
-                                    <Socket name="logstash" host="4b7940ff-723b-490b-9dab-5ae0e1e920ca-ls.logit.io"
-                                    port="16785" protocol="tcp">
-                                        <JSONLayout complete="false" compact="true" eventEol="true" charset="UTF-8" properties="true"/>
-                                    </Socket>
                                 </Appenders>
                                 <Loggers>
                                     <!-- Default logger -->
                                     <Root level="info">
                                         <AppenderRef ref="console" level="info"/>
-                                        <AppenderRef ref="logstash" level="info"/>
                                     </Root>
                                 </Loggers>
                             </Configuration>'
