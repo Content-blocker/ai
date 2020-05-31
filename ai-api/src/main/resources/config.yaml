@@ -14,7 +14,7 @@ kumuluzee:
       max-pool-size: 20
   discovery:
     etcd:
-      hosts: http://34.89.142.186:2379/
+      hosts: http://34.65.200.108:2379/
   health:
     servlet:
       mapping: /ai/health
@@ -23,7 +23,7 @@ kumuluzee:
       enabled: true
     checks:
       etcd-health-check:
-        connection-url: http://34.89.142.186:2379/health
+        connection-url: http://34.65.200.108:2379//health
       data-source-health-check:
         type: liveness
         jndi-name: jdbc/blockerstorage

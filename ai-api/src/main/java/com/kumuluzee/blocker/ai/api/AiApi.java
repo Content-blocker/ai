@@ -26,6 +26,8 @@ public class AiApi {
     static String providerString = (providerTarget.isPresent() ? providerTarget.get().getUri().toString() : "Empty");
     static String fetcherString = (fetcherTarget.isPresent() ? fetcherTarget.get().getUri().toString() : "Empty");
 
+    static PythonHandler pythonHandler = new PythonHandler();
+
     @GET
     @Timed
     @Produces(MediaType.TEXT_HTML)
@@ -85,6 +87,20 @@ public class AiApi {
         return Response
                 .status(Response.Status.OK)
                 .entity("[{\"block\":\"ocean\"}]")
+                .build();
+    }
+
+    @GET
+    @Timed
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/python-app")
+    public Response python_app() {
+        //PythonHandler pythonHandler = new PythonHandler();
+        String returnStr = pythonHandler.pipe("here123");
+        return Response
+                .status(Response.Status.OK)
+                .entity(returnStr + "asd")
                 .build();
     }
 }
