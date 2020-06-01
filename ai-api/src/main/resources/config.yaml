@@ -8,7 +8,7 @@ kumuluzee:
       port: 8082
   datasources:
     - jndi-name: jdbc/blockerstorage
-      connection-url: jdbc:postgresql://35.198.81.102/blockerstorage
+      connection-url: jdbc:postgresql://34.65.73.233/blockerstorage
       username: postgres
       password: postgres
       max-pool-size: 20
