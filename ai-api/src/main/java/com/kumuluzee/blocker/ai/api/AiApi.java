@@ -90,17 +90,78 @@ public class AiApi {
                 .build();
     }
 
+    private Response test_python_app(Double sensitivity, int test){
+        String[] splitIn = new String[]{};
+        int[] expected = new int[]{};
+        if(test == 1){
+            splitIn = new String[]{
+                    "Everyone meets in King's Landing to discuss the fate of the realm",
+                    "In Winterfell, Sansa confronts Arya",
+                    "Sam reaches Winterfell, where he and Bran discover a shocking secret about Jon Snow",
+                    "Arya kills Littlefinger",
+                    "Game of Thrones 7x06 - Army of the Dead attacks Jon Snow and his men",
+                    "Kit Harington's Thoughts On Jon Snow's Ending!? - Game of Thrones Season 8 (Ending)",
+                    "Game of Thrones Cast React to Season 8 at Final Table Read (Full Version)",
+                    "Random text put here to confuse",
+                    "And another writing that is in this place for absolutely no good reason, #spam",
+                    "asonaosfjasjfpasp asiasjf asofjasf ojiq ojp",
+                    "Live updates: Federal officers confront protesters outside White House with tear gas; Bowser condemns federal agencies’ actions"
+            };
+            expected = new int[]{1,1,1,1,1,0,0,0,0,0,0};
+        }
+        if(test > 1){
+            splitIn = new String[]{
+                    "The wight is presented to the Lannister court",
+                    "Why did the Night's Watch kill Jon Snow",
+                    "Upon reaching Winterfell with their combined armies, Jon and Daenerys learn the Army of the Dead has breached the Wall, and the Night King commands the undead Viserion",
+                    "Jaime arrives at Winterfell where Bran awaits him",
+                    "Nine noble families wage war against each other in order to gain control over the mythical land of Westeros.",
+                    "Arya took a stroll in the park today",
+                    "Game of thrones is a great show with dragons, except the last season",
+                    "Dungeons and dragons is a fun game you can play with your friends, but don't die lvl 1"
+            };
+            expected = new int[]{1,1,1,1,0,0,0,0};
+        }
+
+        String returnStr ="";
+        for(int i=0; i< splitIn.length; ++i){
+            if(i!=0) returnStr += "\n";
+            String str = splitIn[i].replaceAll("[^a-zA-Z'\\s]", "");
+            String result = pythonHandler.pipe(str);
+            String[] avgmax= result.split(",");
+            Double avg = Double.parseDouble(avgmax[0]);
+            Double max = Double.parseDouble(avgmax[1]);
+            int qr = max > sensitivity ? 1 : 0;
+            returnStr += expected[i] + "  " + qr + "  " + max + "  " + str;
+        }
+
+        return Response
+                .status(Response.Status.OK)
+                .entity(returnStr)
+                .build();
+    }
+
     @GET
     @Timed
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/python-app")
-    public Response python_app() {
-        //PythonHandler pythonHandler = new PythonHandler();
-        String returnStr = pythonHandler.pipe("here123");
+    public Response python_app(@QueryParam("input") String input, @QueryParam("sensitivity") String sensitivity, @QueryParam("test") String test) {
+        String[] splitIn = input.split("\\|");
+        Double isensitivity = Double.valueOf(sensitivity)/100;
+        if(Integer.parseInt(test) >0 ){
+            return test_python_app(isensitivity, Integer.parseInt(test));
+        }
+
+
+        String returnStr ="";
+        for(int i=0; i< splitIn.length; ++i){
+            if(i!=0) returnStr += "|";
+            returnStr += pythonHandler.pipe(splitIn[i]);
+        }
         return Response
                 .status(Response.Status.OK)
-                .entity(returnStr + "asd")
+                .entity(returnStr)
                 .build();
     }
 }

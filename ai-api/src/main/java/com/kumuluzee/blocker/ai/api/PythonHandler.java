@@ -12,7 +12,8 @@ public class PythonHandler {
     final static Logger LOG = LogManager.getLogger(CustomDiscovery.class.getName());
 
     public static void init(){
-        String cmd = "python ai-api/python-app/python-app.py";
+        String cmd = "python3 ai-api/python-app/python-app.py ai-api/models/enwiki_dbow/doc2vec.bin";
+        //String cmd = "python3 ai-api/python-app/python-app.py ai-api/models/imdb/imdb_model.bin";
 
         try {
             ProcessBuilder pBuilder = new ProcessBuilder();

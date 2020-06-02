@@ -14,19 +14,23 @@ RUN apt-get install -y \
 
 RUN apt-get install -y openjdk-8-jdk
 
-
 RUN pip3 install --upgrade setuptools
 RUN pip3 install wheel
 RUN pip3 install scipy
 RUN pip3 install --upgrade gensim
 
-RUN mkdir /ai
+RUN apt-get install -y curl unzip
 
+RUN mkdir /ai && mkdir /ai/ai-api
 WORKDIR /ai
+
+RUN mkdir /ai/ai-api/models
+RUN curl -fsSL -o /ai/ai-api/models/enwiki_dbow.zip "https://storage.googleapis.com/contentblocker/enwiki_dbow.zip" && \
+    unzip /ai/ai-api/models/enwiki_dbow.zip -d /ai/ai-api/models/
+
+EXPOSE 8082
 
 ADD ./ai-api/target/ai-api-1.0.0.jar /ai
 ADD ./ai-api/python-app /ai/ai-api/python-app
-
-EXPOSE 8082
 
 CMD ["java", "-jar", "ai-api-1.0.0.jar"]

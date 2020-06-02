@@ -1,6 +1,6 @@
 import re
 
-infile = open('myOut.txt', 'r')
+infile = open('myOut2.txt', 'r')
 lines = infile.read().splitlines()
 
 def split_by_sentence(line):
@@ -35,12 +35,15 @@ def clean(line):
     return line
 
 
-
-ofile = open('myOut2.txt', 'w')
+i=0
+ofile = open('myOut3.txt', 'w')
 for line in lines:
+    i+=1
+    if i> 1000: break
     if len(line) < 3:
         continue
     #line = split_by_sentence(line)
+    line = re.sub(r"[^A-Za-z'\s]", '', line)
     line = clean(line)
     ofile.write(line)
     ofile.write("\n")
